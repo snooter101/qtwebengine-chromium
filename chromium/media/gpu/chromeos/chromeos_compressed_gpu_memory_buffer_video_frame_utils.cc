@@ -5,6 +5,10 @@
 #include "media/gpu/chromeos/chromeos_compressed_gpu_memory_buffer_video_frame_utils.h"
 
 #include <drm_fourcc.h>
+
+// add definition for missing I915_FORMAT_MOD_Y_TILED_GEN12_MC_CCS format
+#define I915_FORMAT_MOD_Y_TILED_GEN12_MC_CCS fourcc_mod_code(INTEL, 7)
+
 #include <stdint.h>
 
 #include "base/logging.h"
