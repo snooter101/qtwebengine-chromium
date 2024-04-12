@@ -1221,8 +1221,17 @@ void V4L2CaptureDelegate::SetErrorState(VideoCaptureError error,
 
 #if BUILDFLAG(IS_LINUX)
 gfx::ColorSpace V4L2CaptureDelegate::BuildColorSpaceFromv4l2() {
-  v4l2_colorspace v4l2_primary = (v4l2_colorspace)video_fmt_.fmt.pix.colorspace;
-  v4l2_quantization v4l2_range =
+
+  // this function relies on definitions that don't exist in v4l2 in EL7
+  // seems safest thing to do is to return the empty ColorSpace and let the 
+  // caller deal with it
+  // I don't know how problems this causes will manifest, but it should only be
+  // in video contexts and that isn't a problem for us
+  return gfx::ColorSpace();
+
+/*
+  v4l2_colorspace v4l2_primary = (v4l2_colorspace)video_fmt_.fmt.pix.colorspace;  
+  v4l2_quantization v4l2_range = 
       (v4l2_quantization)video_fmt_.fmt.pix.quantization;
   v4l2_ycbcr_encoding v4l2_matrix =
       (v4l2_ycbcr_encoding)video_fmt_.fmt.pix.ycbcr_enc;
@@ -1408,6 +1417,7 @@ gfx::ColorSpace V4L2CaptureDelegate::BuildColorSpaceFromv4l2() {
   DVLOG(2) << __func__ << "build color space:"
            << gfx::ColorSpace(primary, transfer, matrix, range).ToString();
   return gfx::ColorSpace(primary, transfer, matrix, range);
+  */
 }
 #endif
 

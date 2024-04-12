@@ -6,6 +6,9 @@
 
 #include <drm_fourcc.h>
 
+// Added in drm P010 definition from original source
+#define DRM_FORMAT_P010 fourcc_code('P','0','1','0') /* 2x2 subsampled Cr:Cb plane 10 bits per channel */
+
 #include "base/notreached.h"
 
 namespace ui {

@@ -4,7 +4,11 @@
 
 #include "sandbox/policy/linux/bpf_hardware_video_decoding_policy_linux.h"
 
-#include <linux/kcmp.h>
+// handle missing kcmp.h
+//#include <linux/kcmp.h>
+#ifndef KCMP_FILE
+#define KCMP_FILE 0
+#endif
 
 #include "media/gpu/buildflags.h"
 #include "sandbox/linux/seccomp-bpf-helpers/sigsys_handlers.h"
