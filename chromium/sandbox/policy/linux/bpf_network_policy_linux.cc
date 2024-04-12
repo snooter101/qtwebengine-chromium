@@ -11,6 +11,10 @@
 #include <linux/net.h>
 #include <linux/netlink.h>
 #include <linux/sockios.h>
+
+// workaround missing include
+#include <sys/socket.h>
+
 #include <linux/wireless.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>

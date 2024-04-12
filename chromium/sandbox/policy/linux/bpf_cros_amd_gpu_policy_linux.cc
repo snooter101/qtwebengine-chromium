@@ -6,7 +6,13 @@
 
 #include <errno.h>
 #include <fcntl.h>
-#include <linux/kcmp.h>
+
+// EL7 doesn't have kcmp.h in normal place
+//#include <linux/kcmp.h>
+#ifndef KCMP_FILE
+#define KCMP_FILE 0
+#endif
+
 #include <sys/socket.h>
 
 // Some arch's (arm64 for instance) unistd.h don't pull in symbols used here

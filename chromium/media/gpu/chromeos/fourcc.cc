@@ -219,6 +219,12 @@ uint32_t Fourcc::ToV4L2PixFmt() const {
   return static_cast<uint32_t>(value_);
 }
 #elif BUILDFLAG(USE_VAAPI)
+
+// Add definitions for VA_ values added in libva 2.x (EL7 has libva 1.8)
+
+#define VA_FOURCC_I420 0x30323449
+#define VA_FOURCC_NV21 0x3132564E
+
 // static
 absl::optional<Fourcc> Fourcc::FromVAFourCC(uint32_t va_fourcc) {
   switch (va_fourcc) {

@@ -82,8 +82,8 @@ struct FxPartitionAllocAllocator {
   }
 
   // There's no state, so they are all the same,
-  bool operator==(const FxPartitionAllocAllocator& that) { return true; }
-  bool operator!=(const FxPartitionAllocAllocator& that) { return false; }
+  bool operator==(const FxPartitionAllocAllocator& that) const { return true; }
+  bool operator!=(const FxPartitionAllocAllocator& that) const { return false; }
 };
 
 // Used to put backing store for std::vector<> and such into the
